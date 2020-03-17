@@ -15,10 +15,11 @@ app.get('/', function (req, res) {
 });
 // connection configurations
 var dbConn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'nes'
+    host: 'databases.000webhost.com',
+    port: '80',
+    user: 'id12958271_test',
+    password: '1q2w3e',
+    database: 'id12958271_teste'
 });
   
 // connect to database

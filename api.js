@@ -15,11 +15,11 @@ app.get('/', function (req, res) {
 });
 // connection configurations
 var dbConn = mysql.createConnection({
-    host: 'databases.000webhost.com',
+    host: 'remotemysql.com',
     port: '3306',
-    user: 'id12958271_test',
-    password: '1q2w3e',
-    database: 'id12958271_teste'
+    user: 'aauej2RDHp',
+    password: 'ZnjhsChzJM',
+    database: 'aauej2RDHp'
 });
   
 // connect to database

@@ -56,7 +56,41 @@ app.post('/led', function (req, res) {
         return res.send({ error: false, data: results, message: 'led has been updated successfully.' });
     });
 });
- 
+
+
+app.get('/sensor/:id', function (req, res) {
+  
+    let sensor = req.params.id;
+  
+    if (!sensor) {
+        return res.status(400).send({ error: true, message: 'Please provide sensor' });
+    }
+  
+    dbConn.query('SELECT * FROM sensor where id=?', sensor, function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results[0], message: 'sensor state.' });
+    });
+  
+});
+
+//  Update user with id
+app.post('/sensor', function (req, res) {
+  
+    let sensor_id = req.body.sensor_id;
+    let pitch = req.body.pitch;
+    let roll = req.body.roll;
+
+    if (!sensor_id) {
+        return res.status(400).send({ error: state, message: 'Please provide sensor and id'});
+    }
+  
+    dbConn.query("UPDATE sensor SET pitch = ?, roll = ? WHERE id = ?", [pitch, roll, sensor_id], function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'sensor has been updated successfully.' });
+    });
+});
+
+
 // set port
 app.listen(process.env.PORT || 3000, function () {
     console.log('Node app is running on port 3000');

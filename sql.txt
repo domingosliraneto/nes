@@ -1,0 +1,14 @@
+CREATE TABLE sensor(
+ id INT(6),
+ pitch DOUBLE,
+ roll DOUBLE
+);
+
+INSERT INTO sensro (id, pitch, roll) VALUES (1, -0.0512, 1.0425);
+
+CREATE TABLE led(
+ id INT(6),
+ state DOUBLE
+);
+
+INSERT INTO led (id, state) VALUES (1, 0);

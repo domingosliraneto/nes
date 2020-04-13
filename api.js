@@ -2,7 +2,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
-  
+
+var prod = 0
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -13,27 +15,25 @@ app.use(bodyParser.urlencoded({
 app.get('/', function (req, res) {
     return res.send({ error: true, message: 'hello' })
 });
-// connection configurations
-var dbConn = mysql.createConnection({
-    host: 'remotemysql.com',
-    port: '3306',
-    user: 'aauej2RDHp',
-    password: 'ZnjhsChzJM',
-    database: 'aauej2RDHp'
-});
 
-// // Local
-// app.get('/', function (req, res) {
-//     return res.send({ error: true, message: 'hello' })
-// });
-// // connection configurations
-// var dbConn = mysql.createConnection({
-//     host: '1270.0.0.1',
-//     port: '3306',
-//     user: 'root',
-//     password: '',
-//     database: 'nes'
-// });
+if(prod == 1){
+    var dbConn = mysql.createConnection({
+        host: 'remotemysql.com',
+        port: '3306',
+        user: 'aauej2RDHp',
+        password: 'ZnjhsChzJM',
+        database: 'aauej2RDHp'
+    });
+}
+else{
+    var dbConn = mysql.createConnection({
+        host: '127.0.0.1',
+        port: '3306',
+        user: 'root',
+        password: '',
+        database: 'nes'
+    });
+}
 
 // connect to database
 dbConn.connect(); 
@@ -145,8 +145,6 @@ app.post('/sensorStatus', function (req, res) {
         return res.send({ error: false, data: results, message: 'Sensor Status has been updated successfully.' });
     });
 });
-
-
 
 // set port
 app.listen(process.env.PORT || 3000, function () {

@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
-var prod = 0
+let prod = 1;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

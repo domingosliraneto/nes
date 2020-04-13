@@ -91,6 +91,50 @@ app.post('/sensor', function (req, res) {
 });
 
 
+app.get('/sensorStatus/:nomeEsp', function (req, res) {
+  
+    let nomeEsp = req.params.nomeEsp;
+  
+    if (!nomeEsp) {
+        return res.status(400).send({ error: true, message: 'Please provide Sensor Status - error!.' });
+    }
+  
+    dbConn.query('SELECT * FROM sensorStatus where nomeEsp=?', nomeEsp, function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results[0], message: 'Sensor Status - OK!.' });
+    });
+  
+});
+
+//  Update user with id
+app.post('/sensorStatus', function (req, res) {
+  
+    let nomeEsp = req.body.nomeEsp;
+    let ax = req.body.ax;
+    let ay = req.body.ay;
+    let az = req.body.az;
+    
+    let gx = req.body.ay;
+    let gy = req.body.ay;
+    let gz = req.body.ay;
+
+    let mx = req.body.ay;
+    let my = req.body.ay;
+    let mz = req.body.ay;
+
+    if (!nomeEsp) {
+        return res.status(400).send({ error: state, message: 'Please provide sensor and nomeEsp'});
+    }
+  
+    dbConn.query("UPDATE sensorStatus SET  ax = ?, ay = ? , az = ?,  gx = ?, gy = ?,  gz = ?,  mx = ?,  my = ?,  mz = ? WHERE nomeEsp = ?", 
+    [nomeEsp, ax, ay, az,  gx, gy,  gz,  mx,  my,  mz], function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Sensor Status has been updated successfully.' });
+    });
+});
+
+
+
 // set port
 app.listen(process.env.PORT || 3000, function () {
     console.log('Node app is running on port 3000');

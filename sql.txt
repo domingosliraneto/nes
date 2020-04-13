@@ -12,3 +12,27 @@ CREATE TABLE led(
 );
 
 INSERT INTO led (id, state) VALUES (1, 0);
+
+
+CREATE TABLE sensorStatus(
+ id INT(6),
+ nomeEsp TEXT,
+ ax DOUBLE,
+ ay DOUBLE, 
+ az DOUBLE, 
+ gx DOUBLE,
+ gy DOUBLE, 
+ gz DOUBLE, 
+ mx DOUBLE, 
+ my DOUBLE, 
+ mz DOUBLE  
+);
+
+INSERT INTO sensorStatus (id, nomeEsp, ax, ay, az,  gx, gy,  gz,  mx,  my,  mz) VALUES (
+1, "esp1", 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425);
+
+INSERT INTO sensorStatus (id, nomeEsp, ax, ay, az,  gx, gy,  gz,  mx,  my,  mz) VALUES (
+2, "esp2", 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425);
+
+INSERT INTO sensorStatus (id, nomeEsp, ax, ay, az,  gx, gy,  gz,  mx,  my,  mz) VALUES (
+3, "esp3", 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425, 1.0425);

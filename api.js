@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
 }));
   
   
-// default route
+// Prod
 app.get('/', function (req, res) {
     return res.send({ error: true, message: 'hello' })
 });
@@ -21,7 +21,20 @@ var dbConn = mysql.createConnection({
     password: 'ZnjhsChzJM',
     database: 'aauej2RDHp'
 });
-  
+
+// // Local
+// app.get('/', function (req, res) {
+//     return res.send({ error: true, message: 'hello' })
+// });
+// // connection configurations
+// var dbConn = mysql.createConnection({
+//     host: '1270.0.0.1',
+//     port: '3306',
+//     user: 'root',
+//     password: '',
+//     database: 'nes'
+// });
+
 // connect to database
 dbConn.connect(); 
  
